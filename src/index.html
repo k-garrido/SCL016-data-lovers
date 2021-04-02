@@ -1,12 +1,149 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Chansey Help Center</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="pokemon/IconWithoutLetter.png">
+</head>
+
+<body>
+  <div id="mainPage" class="mainContainer">
+    <section id="landscape">
+      <div id="chanseyLogo">
+        <img id="page1logo" src="pokemon/logo2.png">
+      </div>
+      <div id="findYourPokemonDiv">
+        <input id="findYourPokemonInpt" type="text" placeholder="Busca tu pokemon">
+      </div>
+      <div id="bttnWatchAllPokemonsDiv">
+        <button id="bttnWatchAllPokemons">¡Quiero verlos todos!</button>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footerGif">
+        <img src="pokemon/ChanseyEvolutionGift.gif">
+      </div>
+    </footer>
+  </div>
+  <div id="pokemonsCardPage" class="mainContainer" style="display: none;">
+    <header id="headerPage2">
+      <div class="logo">
+        <a href="index.html"><img class="logoImg" src="pokemon/logo2.png"></a>
+      </div>
+      <h1 class="pageTitle">¡Selecciona tu Pokémon!</h1>
+    </header>
+    <section id="filterAndSortContainer">
+      <div id="filterAndSortList">
+        <ul id="principalUl">
+          <li class="principalLi"><a href="">Ordenar por</a>
+            <ul class="ulChild">
+              <li class="liChild"><a href="">A - Z</a></li>
+              <li class="liChild"><a href="">Z - A</a></li>
+              <li class="liChild"><a href="">#1 - #251</a></li>
+              <li class="liChild"><a href="">#251 - #1</a></li>
+            </ul>
+          </li>
+
+          <li class="principalLi"><a href="">Filtrar por</a>
+            <ul class="ulChild">
+              <li class="liChild"><a href="">Acero</a></li>
+              <li class="liChild"><a href="">Agua</a></li>
+              <li class="liChild"><a href="">Bicho</a></li>
+              <li class="liChild"><a href="">Dragon</a></li>
+              <li class="liChild"><a href="">Electrico</a></li>
+              <li class="liChild"><a href="">Fantasma</a></li>
+              <li class="liChild"><a href="">Fuego</a></li>
+              <li class="liChild"><a href="">Hada</a></li>
+              <li class="liChild"><a href="">Hielo</a></li>
+              <li class="liChild"><a href="">Lucha</a></li>
+              <li class="liChild"><a href="">Normal</a></li>
+              <li class="liChild"><a href="">Planta</a></li>
+              <li class="liChild"><a href="">Psiquico</a></li>
+              <li class="liChild"><a href="">Roca</a></li>
+              <li class="liChild"><a href="">Siniestro</a></li>
+              <li class="liChild"><a href="">Tierra</a></li>
+              <li class="liChild"><a href="">Veneno</a></li>
+              <li class="liChild"><a href="">Volador</a></li> 
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+    <section id="allPokemonsCards"></section>
+    <footer class="footer">
+      <div class="footerGif">
+        <img src="pokemon/ChanseyEvolutionGift.gif">
+      </div>
+    </footer>
+  </div>
+  <div id="pokemonDetails" style="display: none;">
+    <header id="headerPage3">
+      <div class="logo">
+        <a href="index.html"><img class="logoImg" src="pokemon/logo2.png"></a>
+      </div>
+      <div>
+    </header>
+    <div id="firstPart">
+      <section id="pokemonPresentation">
+        <p id="pokemonPresentationTitle"></p>
+        <div id="pokemonType">
+        </div>
+        <div id="pokemonPrincipalImg">
+        </div>
+        <p id="pokemonDescription"></p>
+        <div id=strongAgainst>
+          <p class="strongAndWeakText">Fuerte contra:</p>
+          <div class="strongAndWeakImg" id="strongAgainstImg">
+          </div>
+        </div>
+        <div id="weakAgainst">
+          <p class="strongAndWeakText">Debil contra:</p>
+          <div class="strongAndWeakImg" id="weakAgainstImg">
+          </div>
+        </div>
+      </section>
+      <section id="pokemonStats">
+        <div id="findYourPokemonDiv2">
+          <input id="findYourPokemonInpt2" type="text" placeholder="Buscar otro pokemon">
+        </div>
+        <div id="pokemonStatsContainer">
+          <div id="pokemonBasicStats">
+            <p id="BaseStadistics">Estadisticas base:</p>
+            <p id="baseAttack"></p>
+          </div>
+          <div id="eggInformation">
+          </div>
+          <div id="candyInformation">
+            <img class="imgPokemonStats" src="pokemon/footsprints.PNG">
+            <p id="candyKM" class="pokemonStatsText"></p>
+          </div>
+        </div>
+        
+        
+      </section>
+    </div>
+    <section id="evolutionChain">
+      <p class="pageTitle"></p>
+      <div id="evolution1">
+      </div>
+      <div id="arrowAndRequirement">
+      </div>
+      <div id="evolution2">
+      </div>
+      <div id="arrowAndRequiremen2">
+      </div>
+      <div id="evolution3">
+      </div>
+    </section>
+    <section id="pokemonAbilities">
+      <p class="pageTitle"></p>
+    </section>
+
+  </div>
+  <script src="main.js" type="module"></script>
+</body>
+
 </html>
