@@ -37,35 +37,35 @@
     <section id="filterAndSortContainer">
       <div id="filterAndSortList">
         <ul id="principalUl">
-          <li class="principalLi"><a href="">Ordenar por</a>
+          <li class="principalLi"><a href="#">Ordenar por</a>
             <ul class="ulChild">
-              <li class="liChild"><a href="">A - Z</a></li>
-              <li class="liChild"><a href="">Z - A</a></li>
-              <li class="liChild"><a href="">#1 - #251</a></li>
-              <li class="liChild"><a href="">#251 - #1</a></li>
+              <li class="liChild" id="sortAZ"><a href="#">A - Z</a></li>
+              <li class="liChild" id="sortZA"><a href="#">Z - A</a></li>
+              <li class="liChild" id="ascendingSort"><a href="#">#1 - #251</a></li>
+              <li class="liChild" id="descendingSort"><a href="#">#251 - #1</a></li>
             </ul>
           </li>
 
-          <li class="principalLi"><a href="">Filtrar por</a>
-            <ul class="ulChild">
-              <li class="liChild"><a href="">Acero</a></li>
-              <li class="liChild"><a href="">Agua</a></li>
-              <li class="liChild"><a href="">Bicho</a></li>
-              <li class="liChild"><a href="">Dragon</a></li>
-              <li class="liChild"><a href="">Electrico</a></li>
-              <li class="liChild"><a href="">Fantasma</a></li>
-              <li class="liChild"><a href="">Fuego</a></li>
-              <li class="liChild"><a href="">Hada</a></li>
-              <li class="liChild"><a href="">Hielo</a></li>
-              <li class="liChild"><a href="">Lucha</a></li>
-              <li class="liChild"><a href="">Normal</a></li>
-              <li class="liChild"><a href="">Planta</a></li>
-              <li class="liChild"><a href="">Psiquico</a></li>
-              <li class="liChild"><a href="">Roca</a></li>
-              <li class="liChild"><a href="">Siniestro</a></li>
-              <li class="liChild"><a href="">Tierra</a></li>
-              <li class="liChild"><a href="">Veneno</a></li>
-              <li class="liChild"><a href="">Volador</a></li> 
+          <li class="principalLi"><a href="#">Filtrar por</a>
+            <ul class="ulChild" id="filterSection">
+              <li class="liChild" ><a id="steel" href="#">Acero</a></li>
+              <li class="liChild" ><a id="water" href="#">Agua</a></li>
+              <li class="liChild" ><a id="bug" href="#">Bicho</a></li>
+              <li class="liChild" ><a id="dragon" href="#">Dragon</a></li>
+              <li class="liChild" ><a id="electric" href="#">Electrico</a></li>
+              <li class="liChild" ><a id="ghost" href="#">Fantasma</a></li>
+              <li class="liChild" ><a id="fire" href="#">Fuego</a></li>
+              <li class="liChild" ><a id="fairy" href="#">Hada</a></li>
+              <li class="liChild" ><a id="ice" href="#">Hielo</a></li>
+              <li class="liChild" ><a id="fighting" href="#">Lucha</a></li>
+              <li class="liChild" ><a id="normal" href="#">Normal</a></li>
+              <li class="liChild" ><a id="grass" href="#">Planta</a></li>
+              <li class="liChild" ><a id="psychic"href="#">Psiquico</a></li>
+              <li class="liChild" ><a id="rock" href="#">Roca</a></li>
+              <li class="liChild" ><a id="dark" href="#">Siniestro</a></li>
+              <li class="liChild" ><a id="ground" href="#">Tierra</a></li>
+              <li class="liChild" ><a id="poison" href="#">Veneno</a></li>
+              <li class="liChild" ><a id="flying" href="#">Volador</a></li> 
             </ul>
           </li>
         </ul>
@@ -126,16 +126,20 @@
       </section>
     </div>
     <section id="evolutionChain">
-      <p class="pageTitle"></p>
-      <div id="evolution1">
-      </div>
-      <div id="arrowAndRequirement">
-      </div>
-      <div id="evolution2">
-      </div>
-      <div id="arrowAndRequiremen2">
-      </div>
-      <div id="evolution3">
+      <p class="pageTitle">Cadena de evolución</p>
+      <div id="cardContainer">
+        <div id="evolution1" class="pokemonCard">
+        </div>
+        <div id="arrowAndRequirement">
+          <img  class="arrowPkmn" src="pokemon/Arrow.png">
+        </div>
+        <div id="evolution2" class="pokemonCard">
+        </div>
+        <div id="arrowAndRequiremen2">
+          <img class="arrowPkmn" src="pokemon/Arrow.png">
+        </div>
+        <div id="evolution3" class="pokemonCard">
+        </div>
       </div>
     </section>
     <section id="pokemonAbilities">

@@ -1,10 +1,12 @@
-import {
-  example
-} from './data.js';
 import pokemon from './data/pokemon/pokemon.js';
+import {filteredByType,sortA_Z} from './data.js';
 
-const pokemonData = pokemon.pokemon; console.log (pokemonData)
+const pokemonData = pokemon.pokemon;
 const bttnWatchAllPokemons = document.getElementById("bttnWatchAllPokemons");
+const filteredBttn = document.querySelectorAll("#filterSection li")
+
+console.log (sortA_Z (pokemonData))
+
 //Se crea la siguiente funcion para que cuando se haga click en el boton del pokemon  se muestre la pagina de detalles del pokemon con
 //toda la informacion correspondiente.
 const onClicCard = (event) => {
@@ -14,7 +16,7 @@ const onClicCard = (event) => {
   document.getElementById("pokemonsCardPage").style.display = "none";
   document.getElementById("pokemonDetails").style.display = "block";
 
-  for (let i = 0; i < pokemonData.length; i++) { 
+  for (let i = 0; i < pokemonData.length; i++) {
     if (pokemonData[i].name == targetPokemonName) {
       //Se agrega un if para ir agregando las imagenes del tipo de pokemon.
       if (pokemonData[i].type.length == 1) {
@@ -114,33 +116,33 @@ const onClicCard = (event) => {
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].weaknesses[6]}.png">`;
       };
       //Agregando un if  para agregar la imagen y texto del huevo dependiendo de la informacion entregada.
-      if (pokemonData[i].egg=="2 km"){
-      document.getElementById("eggInformation").innerHTML=`
+      if (pokemonData[i].egg == "2 km") {
+        document.getElementById("eggInformation").innerHTML = `
       <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
       <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
-      }else if(pokemonData[i].egg=="5 km"){
-        document.getElementById("eggInformation").innerHTML=`
+      } else if (pokemonData[i].egg == "5 km") {
+        document.getElementById("eggInformation").innerHTML = `
         <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
-      }else if(pokemonData[i].egg=="7 km"){
-        document.getElementById("eggInformation").innerHTML=`
+      } else if (pokemonData[i].egg == "7 km") {
+        document.getElementById("eggInformation").innerHTML = `
         <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
-      }else if(pokemonData[i].egg=="10 km"){
-        document.getElementById("eggInformation").innerHTML=`
+      } else if (pokemonData[i].egg == "10 km") {
+        document.getElementById("eggInformation").innerHTML = `
         <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
-      }else {
-        document.getElementById("eggInformation").innerHTML=`
+      } else {
+        document.getElementById("eggInformation").innerHTML = `
       <img class="imgPokemonStats" src="pokemon/Eggs/2 km.png"></img>
-      <p class="pokemonStatsText">Este pokemon no se puede obtener de huevo.</p>`;  
+      <p class="pokemonStatsText">Este pokemon no se puede obtener de huevo.</p>`;
       };
       //Agregando el nombre del pokemon a la pagina de "Detalles del pokemon".
       document.getElementById("pokemonPresentationTitle").innerHTML = pokemonData[i].name;
       //Agregando la imagen del pokemon a la pagina de "Detalles del pokemon".
-      document.getElementById("pokemonPrincipalImg").innerHTML = `<img class="pokemonImg2"src="${pokemonData[i].img}">`
+      document.getElementById("pokemonPrincipalImg").innerHTML = `<img class="pokemonImg2"src="${pokemonData[i].img}">`;
       //Agregando la descripcion del pokemon a la pagina de "Detalles del pokemon".
-      document.getElementById("pokemonDescription").innerHTML = pokemonData[i].about
+      document.getElementById("pokemonDescription").innerHTML = pokemonData[i].about;
       //Agregando las estadisticas basicas del pokemon a la pagina de "Detalles del pokemon".
       document.getElementById("baseAttack").innerHTML = `
       Ataque: ${pokemonData[1].stats['base-attack']}<br>
@@ -149,40 +151,121 @@ const onClicCard = (event) => {
       Max-CP: ${pokemonData[1].stats['max-cp']}<br>
       Max-HP: ${pokemonData[1].stats['max-hp']}<br>`;
       //Agragando la cantidad de KM que se debe caminar para conseguir un caramelo del Pokemon.
-      document.getElementById("candyKM").innerHTML= `Camina ${pokemonData[i]['buddy-distance-km']} KM para ganar un caramelo.`
+      document.getElementById("candyKM").innerHTML = `Camina ${pokemonData[i]['buddy-distance-km']} KM para ganar un caramelo.`;
       
+      
+      
+      //Agregando evoluciones.
+      //Pokemon con 2 evoluciones adelante.
+      if (pokemonData[i].evolution['next-evolution'][0]['next-evolution'] !== undefined) {
+        if (pokemonData[i].evolution['next-evolution'] != undefined) {
+          const evolution2Img = pokemonData.find((img) => {
+            if (img.name == pokemonData[i].evolution['next-evolution'][0].name) {
+              return pokemonData;
+            }
+          });
+          const evolution3Img = pokemonData.find((img) => {
+            if (img.name == pokemonData[i].evolution['next-evolution'][0]['next-evolution'][0].name) {
+              return pokemonData;
+            }
+          });
+          document.getElementById("evolution1").innerHTML = `
+          <img  class="pokemonImg" src="${pokemonData[i].img}">
+          <P class="textInsideCards">#${pokemonData[i].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].name}</P>`;
+          document.getElementById("evolution2").innerHTML = `
+          <img  class="pokemonImg" src="${evolution2Img.img}">
+          <P class="textInsideCards">#${pokemonData[i].evolution['next-evolution'][0].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['next-evolution'][0].name}</P>`;
+          document.getElementById("evolution3").innerHTML = `
+          <img  class="pokemonImg" src="${evolution3Img.img}">
+          <P class="textInsideCards">#${pokemonData[i].evolution['next-evolution'][0]['next-evolution'][0].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['next-evolution'][0]['next-evolution'][0].name}</P>`;
+        };
+      };
+      // Pokemon con una pre-evolucion y una evolucion. 
+      if (pokemonData[i].evolution['prev-evolution'] !== undefined) {
+        if (pokemonData[i].evolution['next-evolution'] != undefined) {
+          const evolution3Img = pokemonData.find((img) => {
+            if (img.name == pokemonData[i].evolution['next-evolution'][0].name) {
+              return pokemonData;
+            }
+          });
+          const evolution1Img = pokemonData.find((img) => {
+            if (img.name == pokemonData[i].evolution['prev-evolution'][0].name) {
+              return pokemonData;
+            }
+          });
+          document.getElementById("evolution1").innerHTML = `
+          <img  class="pokemonImg" src="${evolution1Img.img}">
+          <P class="textInsideCards">#${pokemonData[i].evolution['prev-evolution'][0].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['prev-evolution'][0].name}</P>`;
+          document.getElementById("evolution2").innerHTML = `
+          <img  class="pokemonImg" src="${pokemonData[i].img}">
+          <P class="textInsideCards">#${pokemonData[i].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].name}</P>`;
+          document.getElementById("evolution3").innerHTML = `
+          <img  class="pokemonImg" src="${evolution3Img.img}">
+          <P class="textInsideCards">#${pokemonData[i].evolution['next-evolution'][0].num}</P>
+          <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['next-evolution'][0].name}</P>`;
+        };
+      };
 
-      console.log (pokemonData[i]['buddy-distance-km'])
-  
 
-  
 
     } // cierre if principal 
   } //cierre for
-}; //cierre event
-
-
-
-//Se crea evento click en boton "!Quiero verlos todos!"
-bttnWatchAllPokemons.addEventListener("click", () => {
-
+}; //cierre funcion
+//Se declara la siguiente funcion para crear las tarjetas principales de los pokemons
+const drawCards = (data) => {
   const allPokemonsCards = document.getElementById("allPokemonsCards");
-
-  //por la longitud del array de la data se va creando los botones de 
-  //los pokemones y a su vez se va agregando la informacion correspondiente.
-  for (let i = 0; i < pokemonData.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     const pokemonButton = document.createElement("div");
     pokemonButton.className = "pokemonCard";
     pokemonButton.id = "pokemonCard";
-    pokemonButton.name = pokemonData[i].name
-    pokemonButton.innerHTML = `<img  class="pokemonImg" src="${pokemonData[i].img}">
-      <P class="textInsideCards">#${pokemonData[i].num}</P>
-      <P id="pokemonName" class="textInsideCards">${pokemonData[i].name}</P>`
+    pokemonButton.name = data[i].name
+    pokemonButton.innerHTML = `
+      <img  class="pokemonImg" src="${data[i].img}">
+      <P class="textInsideCards">#${data[i].num}</P>
+      <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`
     pokemonButton.addEventListener("click", onClicCard);
     allPokemonsCards.appendChild(pokemonButton);
-  };
+
+   
+      for (let i = 0; i< allPokemonsCards.childNodes.length; i++) {
+        if (allPokemonsCards.childNodes.length >251) {
+          for (let i = 0; i < 251; i++) {
+            allPokemonsCards.childNodes[i].style.display = "none"  
+          }        
+        }      
+      };
+    
+  
+  }
+
   //Al hacer click en el boton se oculta la pagina principal y se muestra solo la pagina
   // con los botones de los pokemons 
   document.getElementById("mainPage").style.display = "none";
   document.getElementById("pokemonsCardPage").style.display = "block";
+};
+
+//Se crea evento click en boton "!Quiero verlos todos!"
+bttnWatchAllPokemons.addEventListener("click", () => {
+  drawCards (pokemonData);
 });
+
+filteredBttn.forEach (bttn => bttn.addEventListener("click", (e) => {
+  
+  const filteredByID = filteredByType(pokemonData,e.target.id);
+  const allPokemonsCards = document.getElementById ("allPokemonsCards")
+  
+  drawCards (filteredByID)
+  
+
+  
+  // if (allPokemonsCards.hasChildNodes)  {
+  //     allPokemonsCards.remove(boton)
+  //   }
+}));
+  
+

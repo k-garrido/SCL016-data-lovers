@@ -214,7 +214,7 @@ body{
         .pokemonCard{
             display: inline-block;
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: column wrap;
             justify-content: center;            
             background-color: white;
             border: 1px solid #000;
@@ -223,14 +223,14 @@ body{
             height: 15em;
         }
             .pokemonImg{
-                display: block;
+                display: inline;
                 display: flex;
                 justify-content: center;
-                margin: 0;
-                padding: 2%;
+                 margin-top: -20%;
+                 margin-bottom: -10%;
             }
             .textInsideCards{
-                display: block;
+                display: inline;
                 display: flex; 
                 justify-content: center;
                 font-family: Sen-Regular;
@@ -432,8 +432,21 @@ body{
                  
             }   
     #evolutionChain{
-        background-color: chartreuse;
+        display: flex;
+        flex-flow: nowrap column;     
     }
+        #cardContainer{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-flow: nowrap row  ;
+
+        }
+            .arrowPkmn{
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
     #pokemonAbilities{
         background-color: chocolate;
     }    
