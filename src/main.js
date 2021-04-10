@@ -1,11 +1,10 @@
 import pokemon from './data/pokemon/pokemon.js';
-import {filteredByType,sortA_Z} from './data.js';
+import {filteredByType,sortA_Z,sortZ_A,ascending_Sort,descending_Sort} from './data.js';
 
 const pokemonData = pokemon.pokemon;
 const bttnWatchAllPokemons = document.getElementById("bttnWatchAllPokemons");
 const filteredBttn = document.querySelectorAll("#filterSection li")
-
-console.log (sortA_Z (pokemonData))
+const sortBttn = document.querySelectorAll ("#sortSection li")
 
 //Se crea la siguiente funcion para que cuando se haga click en el boton del pokemon  se muestre la pagina de detalles del pokemon con
 //toda la informacion correspondiente.
@@ -222,27 +221,15 @@ const drawCards = (data) => {
   for (let i = 0; i < data.length; i++) {
     const pokemonButton = document.createElement("div");
     pokemonButton.className = "pokemonCard";
-    pokemonButton.id = "pokemonCard";
-    pokemonButton.name = data[i].name
+    pokemonButton.id = data[i].name;
+    pokemonButton.name = data[i].name;
     pokemonButton.innerHTML = `
       <img  class="pokemonImg" src="${data[i].img}">
       <P class="textInsideCards">#${data[i].num}</P>
       <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`
     pokemonButton.addEventListener("click", onClicCard);
     allPokemonsCards.appendChild(pokemonButton);
-
-   
-      for (let i = 0; i< allPokemonsCards.childNodes.length; i++) {
-        if (allPokemonsCards.childNodes.length >251) {
-          for (let i = 0; i < 251; i++) {
-            allPokemonsCards.childNodes[i].style.display = "none"  
-          }        
-        }      
-      };
-    
-  
   }
-
   //Al hacer click en el boton se oculta la pagina principal y se muestra solo la pagina
   // con los botones de los pokemons 
   document.getElementById("mainPage").style.display = "none";
@@ -254,18 +241,15 @@ bttnWatchAllPokemons.addEventListener("click", () => {
   drawCards (pokemonData);
 });
 
+//Se crea el evento a los botones de filtrar.
 filteredBttn.forEach (bttn => bttn.addEventListener("click", (e) => {
   
   const filteredByID = filteredByType(pokemonData,e.target.id);
-  const allPokemonsCards = document.getElementById ("allPokemonsCards")
-  
-  drawCards (filteredByID)
-  
 
-  
-  // if (allPokemonsCards.hasChildNodes)  {
-  //     allPokemonsCards.remove(boton)
-  //   }
+  for (let i = 0; i< allPokemonsCards.childElementCount; i++) {      
+    allPokemonsCards.childNodes[i].style.display = "none" 
+  };       
+  drawCards (filteredByID);
 }));
-  
 
+ 
