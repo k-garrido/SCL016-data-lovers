@@ -17,12 +17,14 @@
 }
 body{
     background-image: url(pokemon/Background.jpg);
-    margin: 4%;
+    margin: 0%;
     padding: 0;
+    width: 100%;
 }
-.mainContainer{
+#mainPage{
     display: flex;
     flex-flow:column nowrap;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -32,33 +34,32 @@ body{
         align-items: center;   
         margin: 0;
         padding: 0;
+        width: 100%;
     }
         #chanseyLogo{
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            margin-top: -7%;
             padding: 0;
+            width: 100%;
         }
             #page1logo{
-                width: 40%;
+                width: 30%;
             }
         #findYourPokemonDiv{
             display: flex;
             align-items: center;
-            justify-content: center;
+            flex-flow: nowrap column;
             margin: 0;
-            margin-top: -5%;
+            margin-top: -4%;
             padding: 0; 
-            width: 40%;
-            height: 35px;
+            width: 100%;        
         }
             #findYourPokemonInpt{
                 margin: 0;
-                padding: 3%;
-                width: 100%;
-                height: 100%;
+                width: 40%;
+                height: 40px;
                 border-width: 1px;
                 border-radius: 5px;
                 font-family: Sen-Regular;
@@ -69,9 +70,40 @@ body{
                 background-position-y: 50%;
                 background-size: 5%;        
             }
-                #findYourPokemonInpt::placeholder{
-                    color:black;
+            #pokemonFoundCard{
+                margin: 0;
+                padding: 0;
+                display:flex;
+                flex-flow: nowrap column;
+                width: 40%;     
+            }
+                .PokemonCardForSearch{
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 5%;
+                    width: 100%;
+                    height: 40px;
+                    border: 1px solid #000;
+                    background-color: white;
+                    display: flex;
+                    flex-flow: nowrap row;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-family:Sen-Bold;
+                    font-size: 90%;
                 }
+                    .PokemonCardForSearch:hover{
+                        background-color: lightpink;
+                        }
+                    .pokemonFoundTXT{
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .pokemonFoundImg{
+                        margin: o;
+                        padding: 0;
+                        width:10%;
+                    }
         #bttnWatchAllPokemonsDiv{
             margin-top: 4%;
             padding: 0;
@@ -86,9 +118,9 @@ body{
                 border-radius: 15px;
                 font-family: Sen-Bold;
                 font-size: 100%;
-                color: #EF6D82;      
-
-            }
+                color: #EF6D82;
+                cursor: pointer;     
+            }           
 #pokemonsCardPage{
 
 }     
@@ -457,6 +489,7 @@ body{
         justify-content: center;
         margin-bottom: -10%;
         padding: 0;
+        width: 100%;
     }
         .footerGif{
             margin: 0;

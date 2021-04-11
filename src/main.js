@@ -1,11 +1,17 @@
 import pokemon from './data/pokemon/pokemon.js';
-import {filteredByType,sortA_Z,sortZ_A,ascending_Sort,descending_Sort} from './data.js';
+import {
+  filteredByType,
+  sortA_Z,
+  sortZ_A,
+  ascending_Sort,
+  descending_Sort
+} from './data.js';
 
 const pokemonData = pokemon.pokemon;
 const bttnWatchAllPokemons = document.getElementById("bttnWatchAllPokemons");
-const filteredBttn = document.querySelectorAll("#filterSection li")
-const sortBttn = document.querySelectorAll ("#sortSection li")
-
+const filteredBttn = document.querySelectorAll("#filterSection li");
+const sortBttn = document.querySelectorAll("#sortSection li");
+const searchEngine = document.getElementById("findYourPokemonInpt")
 //Se crea la siguiente funcion para que cuando se haga click en el boton del pokemon  se muestre la pagina de detalles del pokemon con
 //toda la informacion correspondiente.
 const onClicCard = (event) => {
@@ -16,6 +22,7 @@ const onClicCard = (event) => {
   document.getElementById("pokemonDetails").style.display = "block";
 
   for (let i = 0; i < pokemonData.length; i++) {
+    // console.log (pokemonData[i]['quick-move'][0])
     if (pokemonData[i].name == targetPokemonName) {
       //Se agrega un if para ir agregando las imagenes del tipo de pokemon.
       if (pokemonData[i].type.length == 1) {
@@ -151,9 +158,25 @@ const onClicCard = (event) => {
       Max-HP: ${pokemonData[1].stats['max-hp']}<br>`;
       //Agragando la cantidad de KM que se debe caminar para conseguir un caramelo del Pokemon.
       document.getElementById("candyKM").innerHTML = `Camina ${pokemonData[i]['buddy-distance-km']} KM para ganar un caramelo.`;
-      
-      
-      
+      //Agregando las habilidades de cada pokemon 
+      pokemonData[i]['quick-move'].forEach((element) => {
+        const table = document.getElementById("pkmAttack");
+        const quickMoveTable = document.createElement("td");
+        quickMoveTable.id = pokemonData[i].name;
+        quickMoveTable.innerHTML += `
+        <td>${element.name + "<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Move-duration-seg: " + element['move-duration-seg'] }</td>`;
+        table.appendChild(quickMoveTable);
+      });
+      pokemonData[i]['special-attack'].forEach((element) => {
+        const table = document.getElementById("pkmAttack");
+        const quickMoveTable = document.createElement("td");
+        quickMoveTable.id = pokemonData[i].name;
+        quickMoveTable.innerHTML += `
+        <td>${element.name + "<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Move-duration-seg: " + element['move-duration-seg'] }</td>`;
+        table.appendChild(quickMoveTable);
+      });
+      document.getElementById("title1").setAttribute("colSpan", pokemonData[i]['quick-move'].length);
+      document.getElementById("title2").setAttribute("colSpan", pokemonData[i]['special-attack'].length);
       //Agregando evoluciones.
       //Pokemon con 2 evoluciones adelante.
       if (pokemonData[i].evolution['next-evolution'][0]['next-evolution'] !== undefined) {
@@ -210,8 +233,6 @@ const onClicCard = (event) => {
         };
       };
 
-
-
     } // cierre if principal 
   } //cierre for
 }; //cierre funcion
@@ -226,10 +247,10 @@ const drawCards = (data) => {
     pokemonButton.innerHTML = `
       <img  class="pokemonImg" src="${data[i].img}">
       <P class="textInsideCards">#${data[i].num}</P>
-      <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`
+      <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`;
     pokemonButton.addEventListener("click", onClicCard);
     allPokemonsCards.appendChild(pokemonButton);
-  }
+  };
   //Al hacer click en el boton se oculta la pagina principal y se muestra solo la pagina
   // con los botones de los pokemons 
   document.getElementById("mainPage").style.display = "none";
@@ -238,18 +259,62 @@ const drawCards = (data) => {
 
 //Se crea evento click en boton "!Quiero verlos todos!"
 bttnWatchAllPokemons.addEventListener("click", () => {
-  drawCards (pokemonData);
+  drawCards(pokemonData);
 });
 
 //Se crea el evento a los botones de filtrar.
-filteredBttn.forEach (bttn => bttn.addEventListener("click", (e) => {
-  
-  const filteredByID = filteredByType(pokemonData,e.target.id);
+filteredBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
 
-  for (let i = 0; i< allPokemonsCards.childElementCount; i++) {      
-    allPokemonsCards.childNodes[i].style.display = "none" 
-  };       
-  drawCards (filteredByID);
+  const filteredByID = filteredByType(pokemonData, e.target.id);
+
+  for (let i = 0; i < allPokemonsCards.childElementCount; i++) {
+    allPokemonsCards.childNodes[i].style.display = "none"
+  };
+  drawCards(filteredByID);
+}));
+//Se crea el siguiente evento para darle funcionalidad a los botones de "ordenar por".
+sortBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
+  const sortBttnId = e.currentTarget.id
+  let pokemonSorted = []
+  console.log(sortBttnId)
+  if (sortBttnId == "sortAZ") {
+    pokemonSorted = sortA_Z(pokemonData)
+  } else if (sortBttnId == "sortZA") {
+    pokemonSorted = sortZ_A(pokemonData)
+  } else if (sortBttnId == "ascendingSort") {
+    pokemonSorted = ascending_Sort(pokemonData)
+  } else if (sortBttnId == "descendingSort") {
+    pokemonSorted = descending_Sort(pokemonData)
+  };
+  for (let i = 0; i < allPokemonsCards.childElementCount; i++) {
+    allPokemonsCards.childNodes[i].style.display = "none"
+  };
+  drawCards(pokemonSorted);
 }));
 
- 
+const search = (data) => {
+  let findYourPokemonDiv = document.getElementById("pokemonFoundCard");
+  findYourPokemonDiv.innerHTML = ""
+
+  for (let i = 0; i < data.length; i++) {
+    const foundPokemon = document.createElement("div");
+    foundPokemon.id = data[i].name;
+    foundPokemon.className = "PokemonCardForSearch";
+    foundPokemon.name = data[i].name;
+    foundPokemon.innerHTML = `
+    <P class="pokemonFoundTXT">${data[i].name}</P>
+    <img  class="pokemonFoundImg" src="${data[i].img}">`;
+    foundPokemon.addEventListener("click", onClicCard);
+    findYourPokemonDiv.appendChild(foundPokemon);
+  };
+
+};
+
+searchEngine.addEventListener("keypress", () => {
+
+  const enteredText = searchEngine.value.toLowerCase()
+  const filteredBySearch = pokemonData.filter(x => x.name.includes(enteredText));
+  if (enteredText.length > 1) {
+    search(filteredBySearch)
+  };
+});
