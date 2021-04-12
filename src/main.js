@@ -12,6 +12,7 @@ const bttnWatchAllPokemons = document.getElementById("bttnWatchAllPokemons");
 const filteredBttn = document.querySelectorAll("#filterSection li");
 const sortBttn = document.querySelectorAll("#sortSection li");
 const searchEngine = document.getElementById("findYourPokemonInpt")
+const searchEngine2 = document.getElementById ("findYourPokemonInpt2")
 //Se crea la siguiente funcion para que cuando se haga click en el boton del pokemon  se muestre la pagina de detalles del pokemon con
 //toda la informacion correspondiente.
 const onClicCard = (event) => {
@@ -124,24 +125,24 @@ const onClicCard = (event) => {
       //Agregando un if  para agregar la imagen y texto del huevo dependiendo de la informacion entregada.
       if (pokemonData[i].egg == "2 km") {
         document.getElementById("eggInformation").innerHTML = `
-      <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
-      <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
+        <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img></div>
+        <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
       } else if (pokemonData[i].egg == "5 km") {
         document.getElementById("eggInformation").innerHTML = `
-        <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
+        <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img></div>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
       } else if (pokemonData[i].egg == "7 km") {
         document.getElementById("eggInformation").innerHTML = `
-        <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
+        <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img></div>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
       } else if (pokemonData[i].egg == "10 km") {
         document.getElementById("eggInformation").innerHTML = `
-        <img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img>
+        <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/${pokemonData[i].egg}.png"></img></div>
         <p class="pokemonStatsText">Puedes conseguirlo en un huevo de ${pokemonData[i].egg}.</p>`;
       } else {
         document.getElementById("eggInformation").innerHTML = `
-      <img class="imgPokemonStats" src="pokemon/Eggs/2 km.png"></img>
-      <p class="pokemonStatsText">Este pokemon no se puede obtener de huevo.</p>`;
+        <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/2 km.png"></img></div>
+        <p class="pokemonStatsText">Este pokemon no se puede obtener de huevo.</p>`;
       };
       //Agregando el nombre del pokemon a la pagina de "Detalles del pokemon".
       document.getElementById("pokemonPresentationTitle").innerHTML = pokemonData[i].name;
@@ -151,29 +152,31 @@ const onClicCard = (event) => {
       document.getElementById("pokemonDescription").innerHTML = pokemonData[i].about;
       //Agregando las estadisticas basicas del pokemon a la pagina de "Detalles del pokemon".
       document.getElementById("baseAttack").innerHTML = `
-      Ataque: ${pokemonData[1].stats['base-attack']}<br>
-      Defensa: ${pokemonData[1].stats['base-defense']}<br>
-      Stamina: ${pokemonData[1].stats['base-stamina']}<br>
-      Max-CP: ${pokemonData[1].stats['max-cp']}<br>
-      Max-HP: ${pokemonData[1].stats['max-hp']}<br>`;
+      Ataque: ${pokemonData[i].stats['base-attack']}<br>
+      Defensa: ${pokemonData[i].stats['base-defense']}<br>
+      Stamina: ${pokemonData[i].stats['base-stamina']}<br>
+      Max-CP: ${pokemonData[i].stats['max-cp']}<br>
+      Max-HP: ${pokemonData[i].stats['max-hp']}<br>`;
       //Agragando la cantidad de KM que se debe caminar para conseguir un caramelo del Pokemon.
       document.getElementById("candyKM").innerHTML = `Camina ${pokemonData[i]['buddy-distance-km']} KM para ganar un caramelo.`;
-      //Agregando las habilidades de cada pokemon 
+      //Agregando las habilidades de cada pokemon. 
       pokemonData[i]['quick-move'].forEach((element) => {
         const table = document.getElementById("pkmAttack");
         const quickMoveTable = document.createElement("td");
         quickMoveTable.id = pokemonData[i].name;
+        quickMoveTable.className = "quickMoveTD"
         quickMoveTable.innerHTML += `
-        <td>${element.name + "<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Move-duration-seg: " + element['move-duration-seg'] }</td>`;
+        <td>${element.name + "<br>"+"<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Tiempo de animación: " + element['move-duration-seg'] }</td>`;
         table.appendChild(quickMoveTable);
       });
       pokemonData[i]['special-attack'].forEach((element) => {
         const table = document.getElementById("pkmAttack");
-        const quickMoveTable = document.createElement("td");
-        quickMoveTable.id = pokemonData[i].name;
-        quickMoveTable.innerHTML += `
-        <td>${element.name + "<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Move-duration-seg: " + element['move-duration-seg'] }</td>`;
-        table.appendChild(quickMoveTable);
+        const specialMoveTable = document.createElement("td");
+        specialMoveTable.id = pokemonData[i].name;
+        specialMoveTable.className = "specialMoveTD"
+        specialMoveTable.innerHTML += `
+        <td>${element.name + "<br>"+"<br>" + "Tipo: " + element.type + "<br>" + "Daño base: " + element['base-damage'] + "<br>" + "Energia: " + element.energy + "<br>" + "Tiempo de animación: " + element['move-duration-seg'] }</td>`;
+        table.appendChild(specialMoveTable);
       });
       document.getElementById("title1").setAttribute("colSpan", pokemonData[i]['quick-move'].length);
       document.getElementById("title2").setAttribute("colSpan", pokemonData[i]['special-attack'].length);
@@ -245,28 +248,55 @@ const drawCards = (data) => {
     pokemonButton.id = data[i].name;
     pokemonButton.name = data[i].name;
     pokemonButton.innerHTML = `
-      <img  class="pokemonImg" src="${data[i].img}">
+    <div class="pkmnPicture"><img  class="pokemonImg" src="${data[i].img}"></div>
       <P class="textInsideCards">#${data[i].num}</P>
       <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`;
     pokemonButton.addEventListener("click", onClicCard);
     allPokemonsCards.appendChild(pokemonButton);
-  };
-  //Al hacer click en el boton se oculta la pagina principal y se muestra solo la pagina
-  // con los botones de los pokemons 
+  }; 
   document.getElementById("mainPage").style.display = "none";
   document.getElementById("pokemonsCardPage").style.display = "block";
+};
+//Se declara la siguiente funcion para los buscadores de pokemon.
+const search = (data) => {
+  let findYourPokemonDiv = document.getElementById("pokemonFoundCard");
+  findYourPokemonDiv.innerHTML = ""
+
+  for (let i = 0; i < data.length; i++) {
+    const foundPokemon = document.createElement("div");
+    foundPokemon.id = data[i].name;
+    foundPokemon.className = "PokemonCardForSearch";
+    foundPokemon.name = data[i].name;
+    foundPokemon.innerHTML = `
+    <P class="pokemonFoundTXT">${data[i].name}</P>
+    <img  class="pokemonFoundImg" src="${data[i].img}">`;
+    foundPokemon.addEventListener("click", onClicCard);
+    findYourPokemonDiv.appendChild(foundPokemon);
+  };
+};
+const search2 = (data) => {
+  let findYourPokemonDiv2 = document.getElementById("pokemonFoundCard2");
+  findYourPokemonDiv2.innerHTML = ""
+
+  for (let i = 0; i < data.length; i++) {
+    const foundPokemon2 = document.createElement("div");
+    foundPokemon2.className = "PokemonCardForSearch2";
+    foundPokemon2.name = data[i].name;
+    foundPokemon2.innerHTML = `
+    <P class="pokemonFoundTXT">${data[i].name}</P>
+    <img  class="pokemonFoundImg" src="${data[i].img}">`;
+    foundPokemon2.addEventListener("click", onClicCard);
+    findYourPokemonDiv2.appendChild(foundPokemon2);
+  };
 };
 
 //Se crea evento click en boton "!Quiero verlos todos!"
 bttnWatchAllPokemons.addEventListener("click", () => {
   drawCards(pokemonData);
 });
-
 //Se crea el evento a los botones de filtrar.
 filteredBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
-
   const filteredByID = filteredByType(pokemonData, e.target.id);
-
   for (let i = 0; i < allPokemonsCards.childElementCount; i++) {
     allPokemonsCards.childNodes[i].style.display = "none"
   };
@@ -291,30 +321,20 @@ sortBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
   };
   drawCards(pokemonSorted);
 }));
-
-const search = (data) => {
-  let findYourPokemonDiv = document.getElementById("pokemonFoundCard");
-  findYourPokemonDiv.innerHTML = ""
-
-  for (let i = 0; i < data.length; i++) {
-    const foundPokemon = document.createElement("div");
-    foundPokemon.id = data[i].name;
-    foundPokemon.className = "PokemonCardForSearch";
-    foundPokemon.name = data[i].name;
-    foundPokemon.innerHTML = `
-    <P class="pokemonFoundTXT">${data[i].name}</P>
-    <img  class="pokemonFoundImg" src="${data[i].img}">`;
-    foundPokemon.addEventListener("click", onClicCard);
-    findYourPokemonDiv.appendChild(foundPokemon);
-  };
-
-};
-
+//Se agrega el evento al buscador principal.
 searchEngine.addEventListener("keypress", () => {
 
   const enteredText = searchEngine.value.toLowerCase()
   const filteredBySearch = pokemonData.filter(x => x.name.includes(enteredText));
   if (enteredText.length > 1) {
     search(filteredBySearch)
+  };
+});
+searchEngine2.addEventListener("keypress", () => {
+
+  const enteredText2 = searchEngine2.value.toLowerCase()
+  const filteredBySearch2 = pokemonData.filter(x => x.name.includes(enteredText2));
+  if (enteredText2.length > 1) {
+    search2(filteredBySearch2)
   };
 });

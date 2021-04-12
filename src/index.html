@@ -108,6 +108,8 @@
       <section id="pokemonStats">
         <div id="findYourPokemonDiv2">
           <input id="findYourPokemonInpt2" type="text" placeholder="Buscar otro pokemon">
+          <div id="pokemonFoundCard2">
+          </div>
         </div>
         <div id="pokemonStatsContainer">
           <div id="pokemonBasicStats">
@@ -117,25 +119,24 @@
           <div id="eggInformation">
           </div>
           <div id="candyInformation">
-            <img class="imgPokemonStats" src="pokemon/footsprints.PNG">
+            <div id="footsprintsPicture"><img id="footImg" class="imgPokemonStats" src="pokemon/footsprints.PNG">
+            </div>
             <p id="candyKM" class="pokemonStatsText"></p>
           </div>
-        </div>
-        
-        
+        </div>        
       </section>
     </div>
     <section id="evolutionChain">
-      <p class="pageTitle">Cadena de evolución</p>
+      <p id="chainEvolutionTitle">Cadena de evolución</p>
       <div id="cardContainer">
         <div id="evolution1" class="pokemonCard">
         </div>
-        <div id="arrowAndRequirement">
+        <div class="arrowAndRequirement">
           <img  class="arrowPkmn" src="pokemon/Arrow.png">
         </div>
         <div id="evolution2" class="pokemonCard">
         </div>
-        <div id="arrowAndRequiremen2">
+        <div id="arrowAndRequiremen2" class="arrowAndRequirement">
           <img class="arrowPkmn" src="pokemon/Arrow.png">
         </div>
         <div id="evolution3" class="pokemonCard">
@@ -143,7 +144,7 @@
       </div>
     </section>
     <section id="pokemonAbilities">
-      <p class="pageTitle">Habilidades</p>
+      <p id="abilities">Habilidades</p>
       <table>
         <tr id="TableTitle">
           <th id="title1">Ataque rapido</th>
@@ -152,9 +153,9 @@
         <tr id="pkmAttack"></tr>
       </table>
     </section>
-
   </div>
   <script src="main.js" type="module"></script>
 </body>
 
 </html>
+<div id="pkmnPicture"></div>

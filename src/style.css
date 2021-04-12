@@ -122,6 +122,8 @@ body{
                 cursor: pointer;     
             }           
 #pokemonsCardPage{
+    display: flex;
+    flex-flow: column nowrap;
 
 }     
     #headerPage2{
@@ -130,6 +132,7 @@ body{
         margin-top: 0;
         margin-bottom: 0;
         padding: 0;
+        width: 100%;
     }        
         .logo{
             width: 200px;
@@ -151,16 +154,20 @@ body{
         .pageTitle{
             font-family: pokemon;
             color: #EF6D82;
-            font-size: 4.5em;
+            font-size: 400%;
             -webkit-text-stroke: white;
             -webkit-text-stroke-width:0.1px;
-            margin: 0;
-            padding: 0;
+            margin: 10px;
+            margin-bottom: 0;
+            padding: 10px;
+            padding-bottom: 0;
         }
     #filterAndSortContainer{
         margin-top: 0;
-    }       
-        
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+    }            
         #filterAndSortList{
             margin-top: 0;
             padding-top: 0;
@@ -241,26 +248,37 @@ body{
     #allPokemonsCards{
         display: flex;
         flex-flow:row wrap;
-        justify-content: space-between;                   
+        justify-content: space-between;  
+        width: 100%;                 
     }
         .pokemonCard{
-            display: inline-block;
             display: flex;
-            flex-flow: column wrap;
-            justify-content: center;            
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;            
             background-color: white;
             border: 1px solid #000;
             border-radius: 5px;
             width: 18%;
             height: 15em;
+            cursor: pointer;
         }
-            .pokemonImg{
-                display: inline;
+            .pkmnPicture{
                 display: flex;
+                align-items: center;
                 justify-content: center;
-                 margin-top: -20%;
-                 margin-bottom: -10%;
+                padding: 0;
+                margin: 0;
+                width: 60%;
             }
+                .pokemonImg{
+                    display: flex;
+                    justify-content: center;                   
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    
+                }
             .textInsideCards{
                 display: inline;
                 display: flex; 
@@ -278,10 +296,15 @@ body{
     #headerPage3{
         display: flex;
         justify-content: flex-end;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     #firstPart{
         display: flex;
         flex-flow: nowrap row;
+        margin-bottom: 0;
     }
     #pokemonPresentation{
         display: flex;
@@ -379,17 +402,16 @@ body{
         width: 50%;
         display: flex;
         flex-flow: column nowrap;
-        align-items: flex-end;
-        
-        
+        align-items: flex-end; 
         }
         #findYourPokemonDiv2{
+            display: flex;
+            flex-flow: column nowrap;
             margin: 0;
             padding: 0;
             width: 100%;
             display: flex;
-            justify-content: flex-end;
-        
+            align-items: flex-end;      
         }
             #findYourPokemonInpt2{
                 margin: 0;
@@ -408,6 +430,32 @@ body{
                 #findYourPokemonInpt2::placeholder{
                     color:black;
                 }
+            #pokemonFoundCard2{
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: flex-end;
+                margin: 0;
+                padding:0;
+                width: 100%;
+            }
+                .PokemonCardForSearch2{
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 5%;
+                    width: 90%;
+                    height: 40px;
+                    border: 1px solid #000;
+                    background-color: white;
+                    display: flex;
+                    flex-flow: nowrap row;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-family:Sen-Bold;
+                    font-size: 90%;
+                }
+                    .PokemonCardForSearch2:hover{
+                        background-color: lightpink;
+                        }
         #pokemonStatsContainer{
             display: flex;
             justify-content: flex-end;
@@ -446,43 +494,118 @@ body{
                 display: flex;
                 flex-flow: row nowrap;
                 margin-top: 0;
-                padding-top: 0;
-                
+                padding-top: 0;               
             }
+                #eggPicture{
+                    margin: 0;
+                    padding: 0;
+                }
                 .imgPokemonStats{
                     display:inline-block;
-                    width: 20%;
-                    height: 80%;
                     padding: 0;
-                    
                 }
             #candyInformation{
                 display: flex;
-                flex-flow: row nowrap;
-                margin-top: 0;
-                padding-top: 0;
-                 
-            }   
+                flex-flow: row nowrap;             
+                padding-top: 0;               
+            }
+                #footsprintsPicture{
+                    margin-top: 0;
+                    padding-top: 0;
+                } 
+                    #footImg{
+                    width: 120%;
+                    }  
     #evolutionChain{
         display: flex;
-        flex-flow: nowrap column;     
+        flex-flow: nowrap column;
+        margin-top:0 ;
+        padding-top: 0; 
+        margin-bottom:0 ;
+        padding-bottom: 0;    
     }
+        #chainEvolutionTitle{
+            font-family: pokemon;
+            color: #EF6D82;
+            font-size: 400%;
+            -webkit-text-stroke: white;
+            -webkit-text-stroke-width:1px;
+            margin: 10px;
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 10px;
+            padding-bottom: 0;
+            padding-top: 0;
+        }
         #cardContainer{
             margin: 0;
             padding: 0;
             display: flex;
-            flex-flow: nowrap row  ;
-
+            flex-flow: nowrap row;
         }
+            .arrowAndRequirement{
+                display: flex;
+                align-items: center;
+                margin-top: -3%;
+            }
             .arrowPkmn{
                 width: 100%;
                 margin: 0;
                 padding: 0;
             }
     #pokemonAbilities{
-        background-color: chocolate;
-    }    
-     
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        width: 100%;
+    }
+        #abilities{
+            font-family: pokemon;
+            color: #EF6D82;
+            font-size: 400%;
+            -webkit-text-stroke: white;
+            -webkit-text-stroke-width:1px;
+            margin: 10px;
+            margin-bottom: 0;
+            margin-top: 0;
+            padding: 10px;
+            padding-bottom: 0;
+            padding-top: 0; 
+        }    
+            table{
+                width: 100%;
+                table-layout: auto;
+                text-align: center;
+                border-collapse: collapse;
+                background-color: white;
+            }
+                table th{
+                    font-family: Sen-Bold;
+                    font-size: 220%;
+                    -webkit-text-stroke: white;
+                    -webkit-text-stroke-width:0.3px;
+
+                } 
+                    #title1{
+                        background-color: #66e27bbb;
+                        border-top-left-radius: 10px ;
+                    }
+                    #title2{
+                        background-color: #6ec6ebbd;
+                        border-top-right-radius: 10px;
+                    }
+                table td{
+                    font-family: Sen-Regular;
+                    font-size: 120%;
+                    border: 1px solid #000;
+                }
+                    .quickMoveTD {
+                        background-color: #66e27b73;
+                    }
+                    .specialMoveTD{
+                        background-color:#6ec6eb70 ;
+                    }                  
     .footer{
         display: flex;
         align-items: center;
