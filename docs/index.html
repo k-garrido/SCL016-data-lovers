@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Chansey Help Center</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="pokemon/IconWithoutLetter.png">
+</head>
+
+<body>
+  <div id="mainPage" class="mainContainer">
+    <section id="landscape">
+      <div id="chanseyLogo">
+        <img id="page1logo" src="pokemon/logo2.png">
+      </div>
+      <div id="findYourPokemonDiv">
+        <input id="findYourPokemonInpt" type="text" placeholder="Busca tu pokemon">
+        <div id="pokemonFoundCard">
+        </div>
+      </div>
+      <div id="bttnWatchAllPokemonsDiv">
+        <button id="bttnWatchAllPokemons">¡Quiero verlos todos!</button>
+      </div>
+    </section>
+    <footer class="footer">
+        <img src="pokemon/ChanseyEvolutionGift.gif">     
+    </footer>
+  </div>
+  <div id="pokemonsCardPage" class="mainContainer" style="display: none;">
+    <header id="headerPage2">
+      <div class="logo">
+        <a href="index.html"><img class="logoImg" src="pokemon/logo2.png"></a>
+      </div>
+      <h1 class="pageTitle">¡Selecciona tu Pokémon!</h1>
+    </header>
+    <section id="filterAndSortContainer">
+      <div id="filterAndSortList">
+        <ul id="principalUl">
+          <li class="principalLi"><a href="#">Ordenar por</a>
+            <ul class="ulChild" id="sortSection">
+              <li class="liChild" id="sortAZ"><a href="#">A - Z</a></li>
+              <li class="liChild" id="sortZA"><a href="#">Z - A</a></li>
+              <li class="liChild" id="ascendingSort"><a href="#">#1 - #251</a></li>
+              <li class="liChild" id="descendingSort"><a href="#">#251 - #1</a></li>
+            </ul>
+          </li>
+
+          <li class="principalLi"><a href="#">Filtrar por</a>
+            <ul class="ulChild" id="filterSection">
+              <li class="liChild" ><a id="steel" href= "#">Acero</a></li>
+              <li class="liChild" ><a id="water" href="#">Agua</a></li>
+              <li class="liChild" ><a id="bug" href="#">Bicho</a></li>
+              <li class="liChild" ><a id="dragon" href="#">Dragon</a></li>
+              <li class="liChild" ><a id="electric" href="#">Electrico</a></li>
+              <li class="liChild" ><a id="ghost" href="#">Fantasma</a></li>
+              <li class="liChild" ><a id="fire" href="#">Fuego</a></li>
+              <li class="liChild" ><a id="fairy" href="#">Hada</a></li>
+              <li class="liChild" ><a id="ice" href="#">Hielo</a></li>
+              <li class="liChild" ><a id="fighting" href="#">Lucha</a></li>
+              <li class="liChild" ><a id="normal" href="#">Normal</a></li>
+              <li class="liChild" ><a id="grass" href="#">Planta</a></li>
+              <li class="liChild" ><a id="psychic"href="#">Psiquico</a></li>
+              <li class="liChild" ><a id="rock" href="#">Roca</a></li>
+              <li class="liChild" ><a id="dark" href="#">Siniestro</a></li>
+              <li class="liChild" ><a id="ground" href="#">Tierra</a></li>
+              <li class="liChild" ><a id="poison" href="#">Veneno</a></li>
+              <li class="liChild" ><a id="flying" href="#">Volador</a></li> 
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+    <section id="allPokemonsCards"></section>
+    <footer class="footer">
+      <div class="footerGif">
+        <img src="pokemon/ChanseyEvolutionGift.gif">
+      </div>
+    </footer>
+  </div>
+  <div id="pokemonDetails" style="display: none;">
+    <header id="headerPage3">
+      <div class="logo">
+        <a href="index.html"><img class="logoImg" src="pokemon/logo2.png"></a>
+      </div>
+      <div>
+    </header>
+    <div id="firstPart">
+      <section id="pokemonPresentation">
+        <p id="pokemonPresentationTitle"></p>
+        <div id="pokemonType">
+        </div>
+        <div id="pokemonPrincipalImg">
+        </div>
+        <p id="pokemonDescription"></p>
+        <div id=strongAgainst>
+          <p class="strongAndWeakText">Fuerte contra:</p>
+          <div class="strongAndWeakImg" id="strongAgainstImg">
+          </div>
+        </div>
+        <div id="weakAgainst">
+          <p class="strongAndWeakText">Debil contra:</p>
+          <div class="strongAndWeakImg" id="weakAgainstImg">
+          </div>
+        </div>
+      </section>
+      <section id="pokemonStats">
+        <div id="findYourPokemonDiv2">
+          <input id="findYourPokemonInpt2" type="text" placeholder="Buscar otro pokemon">
+          <div id="pokemonFoundCard2">
+          </div>
+        </div>
+        <div id="pokemonStatsContainer">
+          <div id="pokemonBasicStats">
+            <p id="BaseStadistics">Estadisticas base:</p>
+            <p id="baseAttack"></p>
+          </div>
+          <div id="eggInformation">
+          </div>
+          <div id="candyInformation">
+            <div id="footsprintsPicture"><img id="footImg" class="imgPokemonStats" src="pokemon/footsprints.PNG">
+            </div>
+            <p id="candyKM" class="pokemonStatsText"></p>
+          </div>
+        </div>        
+      </section>
+    </div>
+    <section id="evolutionChain">
+      <p id="chainEvolutionTitle">Cadena de evolución</p>
+      <div id="cardContainer">
+        <div id="evolution1" class="pokemonCard">
+        </div>
+        <div class="arrowAndRequirement">
+          <img  class="arrowPkmn" src="pokemon/Arrow.png">
+        </div>
+        <div id="evolution2" class="pokemonCard">
+        </div>
+        <div id="arrowAndRequiremen2" class="arrowAndRequirement">
+          <img class="arrowPkmn" src="pokemon/Arrow.png">
+        </div>
+        <div id="evolution3" class="pokemonCard">
+        </div>
+      </div>
+    </section>
+    <section id="pokemonAbilities">
+      <p id="abilities">Habilidades</p>
+      <table>
+        <tr id="TableTitle">
+          <th id="title1">Ataque rapido</th>
+          <th id="title2">Ataque Cargado</th>
+        </tr>
+        <tr id="pkmAttack"></tr>
+      </table>
+    </section>
+  </div>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
+
