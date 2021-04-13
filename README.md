@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -12,7 +11,7 @@
     <img src="./ReadMeIMG/logo2.png" width ="50%">
     <h2>Historias de usuario</h2>
     <p>A continuacion se presentan las historias de usuarios creadas a partir de la identificacion de necesidades y/o problemas de nuestro jugador de Pokemon Go.</p>
-    <img src="./ReadMeIMG/HistoriasUsuario.png">
+    <img src="./ReadMeIMG/hu.PNG">
     <h2>Sketch</h2>
     <p>A travez de las historias de nuestros usuarios se comenzo a trabajar en el prototipado en papel de nuestro proyecto, este lo podemos ver a continuacion: </p>
     <img src="./ReadMeIMG/prototipo1.jpeg">
