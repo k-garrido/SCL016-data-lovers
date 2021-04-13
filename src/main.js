@@ -33,7 +33,7 @@ const onClicCard = (event) => {
         document.getElementById("pokemonType").innerHTML = `
         <img class="pokemonTypeImg" src="pokemon/PokemonType/${pokemonData[i].type[0]}.png"></img>
         <img class="pokemonTypeImg" src="pokemon/PokemonType/${pokemonData[i].type[1]}.png"></img>`;
-      };
+      }
       //insertando los iconos de los elementos a los cual el pokemon es fuerte.
       if (pokemonData[i].resistant.length == 1) {
         document.getElementById("strongAgainstImg").innerHTML = `
@@ -77,7 +77,7 @@ const onClicCard = (event) => {
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].resistant[4]}.png">
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].resistant[5]}.png">
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].resistant[6]}.png">`;
-      };
+      }
       //insertando los iconos de los elementos a los cual el pokemon es debil.
       if (pokemonData[i].weaknesses.length == 1) {
         document.getElementById("weakAgainstImg").innerHTML = `
@@ -121,7 +121,7 @@ const onClicCard = (event) => {
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].weaknesses[4]}.png">
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].weaknesses[5]}.png">
         <img class="strongWeakAgainstImgClass" src="pokemon/PokemonElements/${pokemonData[i].weaknesses[6]}.png">`;
-      };
+      }
       //Agregando un if  para agregar la imagen y texto del huevo dependiendo de la informacion entregada.
       if (pokemonData[i].egg == "2 km") {
         document.getElementById("eggInformation").innerHTML = `
@@ -143,7 +143,7 @@ const onClicCard = (event) => {
         document.getElementById("eggInformation").innerHTML = `
         <div id="eggPicture"><img class="imgPokemonStats" src="pokemon/Eggs/2 km.png"></img></div>
         <p class="pokemonStatsText">Este pokemon no se puede obtener de huevo.</p>`;
-      };
+      }
       //Agregando el nombre del pokemon a la pagina de "Detalles del pokemon".
       document.getElementById("pokemonPresentationTitle").innerHTML = pokemonData[i].name;
       //Agregando la imagen del pokemon a la pagina de "Detalles del pokemon".
@@ -206,8 +206,8 @@ const onClicCard = (event) => {
           <img  class="pokemonImg" src="${evolution3Img.img}">
           <P class="textInsideCards">#${pokemonData[i].evolution['next-evolution'][0]['next-evolution'][0].num}</P>
           <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['next-evolution'][0]['next-evolution'][0].name}</P>`;
-        };
-      };
+        }
+      }
       // Pokemon con una pre-evolucion y una evolucion. 
       if (pokemonData[i].evolution['prev-evolution'] !== undefined) {
         if (pokemonData[i].evolution['next-evolution'] != undefined) {
@@ -233,8 +233,8 @@ const onClicCard = (event) => {
           <img  class="pokemonImg" src="${evolution3Img.img}">
           <P class="textInsideCards">#${pokemonData[i].evolution['next-evolution'][0].num}</P>
           <P id="pokemonName" class="textInsideCards">${pokemonData[i].evolution['next-evolution'][0].name}</P>`;
-        };
-      };
+        }
+      }
 
     } // cierre if principal 
   } //cierre for
@@ -253,7 +253,7 @@ const drawCards = (data) => {
       <P id="pokemonName" class="textInsideCards">${data[i].name}</P>`;
     pokemonButton.addEventListener("click", onClicCard);
     allPokemonsCards.appendChild(pokemonButton);
-  }; 
+  }
   document.getElementById("mainPage").style.display = "none";
   document.getElementById("pokemonsCardPage").style.display = "block";
 };
@@ -272,7 +272,7 @@ const search = (data) => {
     <img  class="pokemonFoundImg" src="${data[i].img}">`;
     foundPokemon.addEventListener("click", onClicCard);
     findYourPokemonDiv.appendChild(foundPokemon);
-  };
+  }
 };
 const search2 = (data) => {
   let findYourPokemonDiv2 = document.getElementById("pokemonFoundCard2");
@@ -287,7 +287,7 @@ const search2 = (data) => {
     <img  class="pokemonFoundImg" src="${data[i].img}">`;
     foundPokemon2.addEventListener("click", onClicCard);
     findYourPokemonDiv2.appendChild(foundPokemon2);
-  };
+  }
 };
 
 //Se crea evento click en boton "!Quiero verlos todos!"
@@ -299,14 +299,13 @@ filteredBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
   const filteredByID = filteredByType(pokemonData, e.target.id);
   for (let i = 0; i < allPokemonsCards.childElementCount; i++) {
     allPokemonsCards.childNodes[i].style.display = "none"
-  };
+  }
   drawCards(filteredByID);
 }));
 //Se crea el siguiente evento para darle funcionalidad a los botones de "ordenar por".
 sortBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
   const sortBttnId = e.currentTarget.id
   let pokemonSorted = []
-  console.log(sortBttnId)
   if (sortBttnId == "sortAZ") {
     pokemonSorted = sortA_Z(pokemonData)
   } else if (sortBttnId == "sortZA") {
@@ -315,11 +314,11 @@ sortBttn.forEach(bttn => bttn.addEventListener("click", (e) => {
     pokemonSorted = ascending_Sort(pokemonData)
   } else if (sortBttnId == "descendingSort") {
     pokemonSorted = descending_Sort(pokemonData)
-  };
+  }
   for (let i = 0; i < allPokemonsCards.childElementCount; i++) {
     allPokemonsCards.childNodes[i].style.display = "none"
-  };
-  drawCards(pokemonSorted);
+  }
+  drawCards(pokemonSorted)
 }));
 //Se agrega el evento al buscador principal.
 searchEngine.addEventListener("keypress", () => {
@@ -328,13 +327,13 @@ searchEngine.addEventListener("keypress", () => {
   const filteredBySearch = pokemonData.filter(x => x.name.includes(enteredText));
   if (enteredText.length > 1) {
     search(filteredBySearch)
-  };
-});
+  }
+})
 searchEngine2.addEventListener("keypress", () => {
 
   const enteredText2 = searchEngine2.value.toLowerCase()
   const filteredBySearch2 = pokemonData.filter(x => x.name.includes(enteredText2));
   if (enteredText2.length > 1) {
     search2(filteredBySearch2)
-  };
-});
+  }
+})
